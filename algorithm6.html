@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+    //Pig Latin is a way of altering English Words. The rules are as follows:
+
+//- If a word begins with a consonant take the first consonant or consonant cluster, move it to the end of the word, and add "ay" to it.
+
+//- If a word begins with a vowel, just add "way" at the end.
+function translatePigLatin(str) {
+    var newStr = str.toLowerCase();
+    var vowelPos = newStr.search(/[aeiou]/);
+
+    // a word begins with a vowel
+    if (vowelPos == 0) {
+        return newStr.concat("way");
+    } 
+
+    // a word begins with a consonant
+
+    var left = newStr;
+    var right = "";
+    
+    if (vowelPos > 0) {
+       
+        left = newStr.substr(0, vowelPos);
+        right = newStr.substr(vowelPos);
+    }
+
+    // for (var i=1; i<newStr.length; i++) {
+    //     if (vow.indexOf(newStr[i])>=0)  {
+    //         firstCons = newStr.slice(0,i);
+    //         last = newStr.slice(i,-1);
+    //         break;
+    //     } 
+    // }
+
+    return `${right}${left}ay`;
+}
+console.log(translatePigLatin("consonant"));
+console.log(translatePigLatin("california"));
+console.log(translatePigLatin("schwartz"));
+console.log(translatePigLatin("rhythm"));
+console.log(translatePigLatin("algorithm"));
+
+
+</script>
+
+</body>
+</html>

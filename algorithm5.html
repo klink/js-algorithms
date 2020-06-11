@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+    
+    function spinalCase(str) {
+     
+       var newStr = str.split(/([ _])|(?=[A-Z])/).filter(a=> a!==undefined && a!==" " && a!=="_" && a.length>0).join("-").toLowerCase();
+
+  return newStr;
+}
+
+console.log(spinalCase('This Is Spinal Tap'));
+console.log(spinalCase('thisIsSpinalTap'));
+console.log(spinalCase('The_Andy_Griffith_Show'));
+console.log(spinalCase('Teletubbies say Eh-oh'));
+console.log(spinalCase('AllThe-small Things'));
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//Perform a search and replace on the sentence using the arguments provided and return the new sentence.
+//Preserve the case of the first character in the original word when you are replacing it. For example if you mean to replace the word "Book" with the word "dog", it should be replaced as "Dog"
+
+//check the case of 1st letter in a target word 
+
+
+
+
+
+function myReplace(str, before, after) {
+    var regex = new RegExp(before, 'gi');
+    var position = str.search(regex); 
+    if (str[position].match(/[a-x]/) ) {
+        return str.replace(regex, after[0].toLowerCase().concat(after.substr(1)));
+
+    } else return str.replace(regex, after[0].toUpperCase().concat(after.substr(1)));
+}
+
+console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"));
+console.log(myReplace("Let us go to the store", "store", "mall"));
+console.log(myReplace("His name is Tom", "Tom", "john"));
+console.log(myReplace("Let us get back to more Coding", "coding", "algorithms"));
+
+ </script>
+
+</body>
+</html>

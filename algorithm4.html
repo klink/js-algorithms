@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+// matchObject({ first: "Romeo", last: "Montague" }, {last: "Montague"}) === true
+function matchObject(object, source)   {
+    var arr = Object.keys(source); 
+    for (var i=0; i<arr.length; i++) {
+        var key = arr[i]; 
+        if (object[key] !== source[key]) {
+            return false; 
+        }
+    }        
+     return true; 
+}
+
+function whatIsInAName(collection, source) {
+  // Only change code below this line
+return collection.filter(object => matchObject(object,source));
+  // Only change code above this line
+}
+
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+console.log(whatIsInAName([{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }], { "apple": 1 }));
+console.log(whatIsInAName([{"a": 1, "b": 2, "c": 3}], {"a": 1, "b": 9999, "c": 3}));
+
+
+</script>
+
+</body>
+</html>

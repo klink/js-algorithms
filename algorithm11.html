@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+
+function convertHTML(str) {
+    //1. Set up a dictionary 
+    var diction = {
+    "&": "&amp;",
+    "<" : "&lt;",
+    ">" : "&gt;",
+    "\"": "&quot;",
+    "'": "&apos;",
+    };
+
+
+   
+ //1. Find the special characters & Convert the special characters
+// for (var i = 0; i<str.length; i++) {
+//     if (Object.keys(diction).includes(str[i])) {
+//        str = str.replace(str[i],diction[str[i]]);
+//     }
+// }
+   return str.split('').map(c => {
+       if (diction[c]) {
+           return diction[c];
+        }
+        return c;
+   }).join('');
+}
+
+
+//tests 
+console.log(convertHTML("Dolce & Gabbana"));
+console.log(convertHTML("Hamburgers < Pizza < Tacos"));
+console.log(convertHTML('Stuff in "quotation marks"'));
+console.log(convertHTML("<>"));
+console.log(convertHTML("abc"));
+
+
+      </script>
+
+</body>
+</html>

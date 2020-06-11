@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+function reverseString(s) {
+  return s.split("").reverse().map(c => {
+    if (c === '(') {
+      return ')';
+    } else if (c === ')') {
+      return '(';
+    }
+    return c;
+  }).join("");
+}
+
+function readAndReverseInsideParens(s, cursor) {
+  var accum = "";
+  
+  while (cursor<s.length) {
+    var c = s[cursor];
+
+    // shift cursor right 
+    cursor = cursor + 1; 
+
+    // if the opening parens, call the recursive function
+    if (c == "(") {
+      var subStr;
+      [subStr, cursor] = readAndReverseInsideParens(s, cursor);
+      accum = accum + '(' + reverseString(subStr) + ')'; 
+    } else if (c==")") {
+      break;
+    } else {
+      accum = accum + c;
+    }
+  }
+  return [accum, cursor]; 
+}
+
+function reverseInParens(text){
+  var [reversed, cursor] = readAndReverseInsideParens(text, 0);
+  return reversed;
+}
+
+console.log(reverseInParens("h(el)lo"), "h(le)lo");
+console.log(reverseInParens("a ((d e) c b)"), "a (b c (d e))");
+console.log(reverseInParens("one (two (three) four)"), "one (ruof (three) owt)");
+console.log(reverseInParens("one (ruof ((rht)ee) owt)"), "one (two ((thr)ee) four)");
+
+</script>
+
+</body>
+</html>
