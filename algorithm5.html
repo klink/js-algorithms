@@ -4,13 +4,19 @@
 
 
 <script>
-    
+
+  //https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/spinal-tap-case
+  // Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+
+
     function spinalCase(str) {
      
        var newStr = str.split(/([ _])|(?=[A-Z])/).filter(a=> a!==undefined && a!==" " && a!=="_" && a.length>0).join("-").toLowerCase();
 
   return newStr;
 }
+
+//tests 
 
 console.log(spinalCase('This Is Spinal Tap'));
 console.log(spinalCase('thisIsSpinalTap'));
