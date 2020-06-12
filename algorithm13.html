@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/sum-all-primes 
+//Sum All Primes : A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself.
+//Return the sum of all prime numbers that are less than or equal to num.
+
+
+function generateSequence(num) {
+    var result = [];
+for (var i=1; i<=num; i++) {
+    result.push(i);
+}
+
+    return result;
+}
+
+function isDivisible(num, candidate) {
+    return num%candidate === 0;
+}
+
+
+function isPrime(num) {
+    if (num == 1) {
+        return false;
+    }
+    for (var i=2; i<num; i++) {
+        if (isDivisible(num, i)) {
+                return false;
+            }
+        }
+        return true;
+}
+   
+function sumPrimes(num) {
+    
+    var arr = generateSequence(num);
+    var primeArr = arr.filter(isPrime);
+
+    //sum all the numbers 
+
+return primeArr.reduce((a,b)=> (a+b));
+
+
+}
+
+
+//tests 
+console.log(isPrime(1));
+console.log(isPrime(11));
+
+console.log(sumPrimes(10));
+console.log(sumPrimes(977));
+
+
+
+</script>
+
+</body>
+</html>
