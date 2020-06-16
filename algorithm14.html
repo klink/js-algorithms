@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/smallest-common-multiple
+//Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+
+// getPrimeFactors(12) = {3:1, 2:2}
+function getPrimeFactors(num) {
+    var result = {};
+    for (var i=2; i<=num ;) {
+        if (num%i == 0) {
+            num = num/i;
+            if(result[i]==undefined) {
+                result[i]=0; 
+            }
+            result[i] ++; 
+        } else {
+            i= i+1;
+        } 
+    }
+
+    return result; 
+}
+
+function mergeFactors(a,b){
+var keys = Object.keys(b); 
+for (var i=0; i<keys.length; i++) {
+    var key = keys[i];
+    var value1 = a[key];
+    var value2 = b[key];
+    if (value1 == undefined || value1 < value2) {
+        a[key]= value2;
+    }
+}
+return a;
+}
+
+function smallestCommons(arr) {
+    //1. Get all the sequential numbers in the range 
+
+arr.sort((a,b)=>(a-b)); 
+var newArr=[];
+for (var i = arr[0]; i<=arr[1]; i++) {
+    newArr.push(i); 
+}
+     //2. Find factors for all numbers in range;  
+var factors = newArr.map(getPrimeFactors).reduce(mergeFactors);
+
+    //3.Multiply the factors 
+return Object.entries(factors).map(([a,b]) => Math.pow(a,b)).reduce((a,b) => (a*b));
+
+}
+//tests 
+console.log(getPrimeFactors(84));
+console.log(getPrimeFactors(1024));
+console.log(getPrimeFactors(1025));
+
+console.log(mergeFactors({1:40,10:3},{1:30,10:4,11:1}));
+
+console.log(smallestCommons([1,5]));
+console.log(smallestCommons([5,1]));
+console.log(smallestCommons([2,10]));
+console.log(smallestCommons([1,13]));
+console.log(smallestCommons([23,18]));
+
+</script>
+
+</body>
+</html>
