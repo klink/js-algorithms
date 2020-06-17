@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/steamroller 
+//Flatten a nested array. You must account for varying levels of nesting.
+
+
+//solution #1
+// function steamrollArray(arr) {
+//     var newArr =[];
+//     for (var i=0; i<arr.length; i++) {
+//         if (Array.isArray(arr[i])){
+//             //use recursion to flatten the sub-array
+//             newArr.push(...steamrollArray(arr[i]));
+//         } else {
+//             newArr.push(arr[i]);
+//         }
+//     }
+    
+//     return newArr;
+// }
+
+// solution #2
+function steamrollArray(arr){
+    return arr.map(e=> {
+        if (Array.isArray(e)){
+            return steamrollArray(e);
+        } else {
+            return [e];
+        }
+    }).reduce((a,b)=>a.concat(b), []);
+}
+
+//tests 
+console.log(steamrollArray([1, [2], [3, [[4]]]]));
+console.log(steamrollArray([[["a"]], [["b"]]]));
+console.log(steamrollArray([1, [2], [3, [[4]]]]));
+console.log(steamrollArray([[1, [], [3, [[4]]]]]));
+console.log(steamrollArray([[1, [], [3, [[4]]]]]));
+console.log(steamrollArray([1, {}, [3, [[4]]]]));
+
+</script>
+
+
+
+</body>
+</html>
