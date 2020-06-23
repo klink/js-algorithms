@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/make-a-person
+//Fill in the object constructor with the given methods
+
+function Person(firstAndLast) {
+  // Complete the method below and implement the others similarly
+  var firstName, lastName;
+
+  function getFN() {
+    return `${firstName} ${lastName}`;
+  };
+
+  function setFN(n) {
+    [firstName, lastName] = n.split(' ');
+  }
+
+  setFN(firstAndLast);
+
+
+  function getFirstN(){
+    return firstName;
+  }
+
+ 
+
+  function getLastN(){
+    return lastName;
+  }
+
+  this.getFullName = getFN;
+  this.setFullName = setFN;
+  this.getFirstName = getFirstN;
+  this.setFirstName = function(n){
+    firstName = n;
+  };
+  this.getLastName = getLastN;
+  this.setLastName = function(n){
+    lastName = n;
+  };
+
+  return this;
+};
+
+
+var bob = new Person('Bob Ross');
+bob.setFirstName("Haskell");
+bob.setLastName("Curry");
+
+//tests
+console.log(bob);
+console.log(Object.keys(bob).length);
+console.log(bob instanceof Person);
+//console.log(bob.firstName());
+//console.log(bob.lastName());
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+console.log(bob.getFullName());
+
+
+
+</script>
+
+
+
+</body>
+</html>
