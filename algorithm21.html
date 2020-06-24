@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+    //https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/map-the-debris
+    //
+
+    const earthRadius = 6367.4447;
+    const GM = 398600.4418;
+
+
+function calculatePeriod(alt) {
+    var orbitRadius = alt + earthRadius; 
+    return Math.round(2*Math.PI*Math.sqrt(Math.pow(orbitRadius,3)/GM));
+
+}
+
+
+function transform (obj) {
+    var alt = obj.avgAlt;
+    delete obj.avgAlt; 
+    obj.orbitalPeriod = calculatePeriod(alt);
+    return obj;
+}
+
+    function orbitalPeriod(arr) {
+  return arr.map(transform);
+}
+
+//tests
+console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
+console.log(orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {name: "moon", avgAlt: 378632.553}]));
+
+</script>
+
+
+
+</body>
+</html>
