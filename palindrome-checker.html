@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+    //https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/palindrome-checker
+    //Return true if the given string is a palindrome. Otherwise, return false.
+    //You'll need to remove all non-alphanumeric characters (punctuation, spaces and symbols) and turn everything into the same case (lower or upper case) in order to check for palindromes.
+
+    function palindrome(str) {
+
+        var arr = str.toLowerCase().match(/[^_\W]/g);
+
+        var newArr = arr.slice(0);
+
+        newArr.reverse();
+        
+
+        return arr.every(function(e, i) {return e == newArr[i]});
+
+}
+
+
+//tests 
+console.log(palindrome("eye"));
+console.log(palindrome("_eye"));
+console.log(palindrome("race car"));
+console.log(palindrome("not a palindrome"));
+console.log(palindrome("A man, a plan, a canal. Panama"));
+console.log(palindrome("never odd or even"));
+console.log(palindrome("nope"));
+console.log(palindrome("almostomla"));
+console.log(palindrome("My age is 0, 0 si ega ym."));
+console.log(palindrome("1 eye for of 1 eye."));
+console.log(palindrome("0_0 (: /-\ :) 0-0"));
+console.log(palindrome("five|\_/|four"));
+
+
+</script>
+
+
+
+</body>
+</html>
