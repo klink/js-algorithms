@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/roman-numeral-converter
+//Convert the given number into a roman numeral.
+//All roman numerals answers should be provided in upper-case.
+
+function fixRoman(romanNum){
+
+//replace combinations of 4+ roman values with a correct equivalent using substraction (except thousands)
+
+    if (romanNum.search("CCCC") !== -1) {
+        romanNum = romanNum.replace("DCCCC","CM")
+        romanNum = romanNum.replace("CCCC","CD")
+
+    }
+    if (romanNum.search("XXXX") !== -1) {
+        romanNum = romanNum.replace("LXXXX","XC")
+        romanNum = romanNum.replace("XXXX","XL")
+
+    }if (romanNum.search("IIII") !== -1) {
+        romanNum = romanNum.replace("VIIII","IX")
+        romanNum = romanNum.replace("IIII","IV")
+
+    }
+     return romanNum;
+}
+
+
+function convertToRoman(num) {
+    var romanNum = "";
+    var convChart = {};
+    convChart[1] = "I";
+    convChart[5] = "V";
+    convChart[10] = "X";
+    convChart[50] = "L";
+    convChart[100] = "C";
+    convChart[500] = "D";
+    convChart[1000] = "M";
+
+    while (num > 0) {
+        if (num >=1000) {
+            romanNum =romanNum + "M";
+            num = num - 1000;
+        }
+
+        if (num >=500 && num <1000){
+            romanNum =romanNum + "D";
+            num = num - 500;
+        }
+        if (num >=100 && num <500){
+            romanNum =romanNum + "C";
+            num = num - 100;
+        }
+        if (num >=50 && num <100){
+            romanNum =romanNum + "L";
+            num = num - 50;
+        }
+        if (num >=10 && num <50){
+            romanNum =romanNum + "X";
+            num = num - 10;
+        }
+        if (num >=5 && num <10){
+            romanNum =romanNum + "V";
+            num = num - 5;
+        }
+        if (num >=1 && num <5){
+            romanNum =romanNum + "I";
+            num = num - 1;
+        }
+    }
+
+    return fixRoman(romanNum);
+}
+
+
+//tests
+
+console.log(convertToRoman(1));
+console.log(convertToRoman(11));
+console.log(convertToRoman(111));
+console.log(convertToRoman(2111));
+console.log(convertToRoman(649));
+console.log(convertToRoman(798));
+console.log(convertToRoman(891));
+
+
+
+</script>
+
+
+
+</body>
+</html>
