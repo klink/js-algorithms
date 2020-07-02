@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+//https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/caesars-cipher
+//Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+//All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass them on.
+
+function rot13(str) {
+var newArr = str.split("");
+newArr= newArr.map(letter => letter.charCodeAt());
+var lastArr = [];
+for (var i=0; i<newArr.length; i++) {
+    if (newArr[i] >= 65 && newArr[i] <= 90) {
+        newArr[i] = ((((newArr[i] + 13)-65)%26)+65);
+        lastArr.push(newArr[i]);
+    } else {
+        lastArr.push(newArr[i]);
+    }
+}
+return lastArr.map(a => String.fromCharCode(a)).join("");
+
+}
+
+//tests
+console.log(rot13("SERR PBQR PNZC"));
+console.log(rot13("SERR CVMMN!"));
+console.log(rot13("SERR YBIR?"));
+console.log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
+
+
+</script>
+
+</body>
+</html>
